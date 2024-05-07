@@ -1,17 +1,12 @@
-function partitionLabels(s) {
-  const last = new Array(26);
-  for (let i = 0; i < s.length; i++) {
-    last[s.charCodeAt(i) - "a".charCodeAt(0)] = i;
-  }
-  let anchor = 0;
-  let j = 0;
-  const result = [];
-  for (let i = 0; i < s.length; i++) {
-    j = Math.max(j, last[s.charCodeAt(i) - "a".charCodeAt(0)]);
-    if (i === j) {
-      result.push(i - anchor + 1);
-      anchor = i + 1;
+function insertionSort(arr) {
+  for (let i = 1; i < arr.length; i++) {
+    let key = arr[i];
+    let j = i - 1;
+    while (j >= 0 && arr[j] > key) {
+      arr[j + 1] = arr[j];
+      j--;
     }
+    arr[j + 1] = key;
   }
-  return result;
+  return arr;
 }
