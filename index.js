@@ -1,25 +1,13 @@
-function trap(height) {
-  let totalWater = 0;
-  let left = 0;
-  let right = height.length - 1;
-  let maxLeft = 0;
-  let maxRight = 0;
-  while (left < right) {
-    if (height[left] < height[right]) {
-      if (height[left] >= maxLeft) {
-        maxLeft = height[left];
-      } else {
-        totalWater += maxLeft - height[left];
-      }
-      left++;
-    } else {
-      if (height[right] >= maxRight) {
-        maxRight = height[right];
-      } else {
-        totalWater += maxRight - height[right];
-      }
-      right--;
+function subsets(nums) {
+  const result = [];
+  backtrack(0, []);
+  return result;
+  function backtrack(start, current) {
+    result.push([...current]);
+    for (let i = start; i < nums.length; i++) {
+      current.push(nums[i]);
+      backtrack(i + 1, current);
+      current.pop();
     }
   }
-  return totalWater;
 }
